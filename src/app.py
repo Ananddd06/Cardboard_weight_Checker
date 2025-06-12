@@ -36,24 +36,24 @@ def main():
         st.markdown("#### Enter Dimensions")
         col1, col2 = st.columns([2, 1])
         with col1:
-            length = st.number_input("Length", key="length", step=1)
+            length = st.number_input("Length", key="length", format="%.2f")
         with col2:
             length_unit = st.selectbox("Unit", ["cm", "inches", "mm"], key="length_unit")
 
         col3, col4 = st.columns([2, 1])
         with col3:
-            width = st.number_input("Width", key="width", step=1)
+            width = st.number_input("Width", key="width", format="%.2f")
         with col4:
             width_unit = st.selectbox("Unit", ["cm", "inches", "mm"], key="width_unit")
 
         col5, col6 = st.columns([2, 1])
         with col5:
-            height = st.number_input("Height", key="height", step=1)
+            height = st.number_input("Height", key="height", format="%.2f")
         with col6:
             height_unit = st.selectbox("Unit", ["cm", "inches", "mm"], key="height_unit")
 
         st.markdown("#### Enter GSM")
-        gsm = st.number_input("GSM (grams per square meter)", step=1)
+        gsm = st.number_input("GSM (grams per square meter)", format="%.2f")
 
         submitted = st.form_submit_button("Calculate")
 
