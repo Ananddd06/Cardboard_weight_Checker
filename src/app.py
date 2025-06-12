@@ -24,6 +24,19 @@ def main():
             background-color: #f1f5f9;
             border-radius: 6px;
         }
+        @media (max-width: 600px) {
+            .stColumns {
+                flex-direction: row !important;
+                gap: 0.25rem !important;
+            }
+            .stNumberInput, .stSelectbox {
+                width: 100% !important;
+            }
+            .stButton>button {
+                width: 100%;
+                font-size: 1.1em;
+            }
+        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -36,19 +49,22 @@ def main():
         st.markdown("#### Enter Dimensions")
         ply = st.selectbox("Select Cardboard Ply", ["3PLY", "5PLY", "7PLY"])
 
-        col1, col2 = st.columns([2, 1])
+        # Responsive columns for Length
+        col1, col2 = st.columns([3, 1], gap="small")
         with col1:
             length = st.number_input("Length", key="length", format="%.2f")
         with col2:
             length_unit = st.selectbox("Unit", ["cm", "inches", "mm"], key="length_unit")
 
-        col3, col4 = st.columns([2, 1])
+        # Responsive columns for Width
+        col3, col4 = st.columns([3, 1], gap="small")
         with col3:
             width = st.number_input("Width", key="width", format="%.2f")
         with col4:
             width_unit = st.selectbox("Unit", ["cm", "inches", "mm"], key="width_unit")
 
-        col5, col6 = st.columns([2, 1])
+        # Responsive columns for Height
+        col5, col6 = st.columns([3, 1], gap="small")
         with col5:
             height = st.number_input("Height", key="height", format="%.2f")
         with col6:
