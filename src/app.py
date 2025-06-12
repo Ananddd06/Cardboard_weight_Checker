@@ -29,11 +29,13 @@ def main():
         unsafe_allow_html=True,
     )
 
-    st.markdown("<h1 style='text-align: center; color: #2563eb; margin-bottom:0;'>📦 Cardboard Weight Calculator</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #2563eb; margin-bottom:0;'>📦 Cardboard Weight Calculator for 3PLY and 5PLY/7PLY </h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #334155; font-size:1.1em;'>Enter your cardboard dimensions and GSM to calculate the size and weight.</p>", unsafe_allow_html=True)
 
     with st.form("cardboard_form"):
         st.markdown("#### Enter Dimensions")
+        ply = st.selectbox("Select Cardboard Ply", ["3PLY", "5PLY", "7PLY"])
+
         col1, col2 = st.columns([2, 1])
         with col1:
             length = st.number_input("Length", key="length", format="%.2f")
@@ -62,8 +64,13 @@ def main():
         width_cm = convert_to_cm(width, width_unit)
         height_cm = convert_to_cm(height, height_unit)
 
-        extra1 = 2.5
-        extra2 = 5
+        # Calculate extra based on ply
+        if ply == "3PLY":
+            extra1 = 3
+            extra2 = 6
+        else:  # 5PLY or 7PLY
+            extra1 = 3
+            extra2 = 12
 
         part1 = width_cm + height_cm + extra1
         part2 = (length_cm + width_cm) * 2 + extra2
