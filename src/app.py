@@ -47,7 +47,7 @@ def main():
 
     with st.form("cardboard_form"):
         st.markdown("#### Enter Dimensions")
-        ply = st.selectbox("Select Cardboard Ply", ["3PLY", "5PLY", "7PLY"])
+        ply = st.selectbox("Select Cardboard Ply", ["3PLY", "5PLY","7PLY"])
 
         # Responsive columns for Length
         col1, col2 = st.columns([3, 1], gap="small")
